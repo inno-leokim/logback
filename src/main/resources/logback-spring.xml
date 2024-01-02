@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <!-- 아래 방법은 현재 spring 버전에서 되지 않는 것 같다 -->
+    <!-- <include resource="logback-spring-${spring.profiles.active}.xml"/> -->
+    <springProfile name="local">
+        <include resource="logback-spring-local.xml"/>
+    </springProfile> 
+    <springProfile name="prod">
+        <include resource="logback-spring-prod.xml"/>
+    </springProfile> 
+</configuration>

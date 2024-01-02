@@ -1,0 +1,27 @@
+<included>
+    <!-- console-appender를 사용하므로 include 시켜준다.-->
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/> 
+
+    <!-- Custom 로그도 만들어서 사용할 수 있다. -->
+    <appender name="CONSOLE2" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<!-- appender마다 고유의 로그레벨을 지정할 수 있다. root의 level에 우선한다. -->
+            <level>INFO</level> 
+		</filter>
+		<layout>
+            <pattern>
+                <!-- [CONSOLE2] [%-5level] %d{yyyy-MM-dd HH:mm:ss} [%thread] [%logger{0}:%line] - %msg%n -->
+                [CONSOLE2] [%-5level] %d{yyyy-MM-dd HH:mm:ss} [%thread] [%logger{40}:%line] - %msg%n
+            </pattern>
+        </layout>
+	</appender>
+
+    <!-- DEBUG < INFO < WARN < ERROR -->
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+        <!-- <appender-ref ref="CONSOLE2" />  -->
+    </root>
+    <!-- <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root> -->
+</included>
